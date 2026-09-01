@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vignesh K — AI & Data Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0B0B0A;
+    --ink:#EDEAE0;
+    --ink-soft:#A6A399;
+    --line:#2A2A26;
+    --moss:#7FBF92;
+    --moss-deep:#132018;
+    --amber:#E0A24E;
+    --card:#131311;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    background-image:
+      radial-gradient(var(--line) 1px, transparent 1px);
+    background-size:26px 26px;
+  }
+  a{color:inherit;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+
+  header.top{
+    padding:64px 0 40px;
+  }
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--moss);
+    letter-spacing:0.02em;
+  }
+  h1{
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:600;
+    font-size:44px;
+    line-height:1.15;
+    margin:14px 0 6px;
+    color:var(--ink);
+    position:relative;
+    display:inline-block;
+  }
+  .scatter-rule{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin:0 0 20px;
+  }
+  .scatter-rule span{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--moss);
+  }
+  .scatter-rule span:nth-child(3n){background:var(--amber);}
+  .scatter-rule span:nth-child(5n){opacity:0.4;}
+  .scatter-rule .bar{
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .tagline{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:52ch;
+  }
+
+  .status-block{
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .status-block > div{
+    font-size:16px;
+    color:var(--ink);
+  }
+  .status-label{
+    display:inline-block;
+    min-width:110px;
+    color:var(--ink-soft);
+    font-size:13px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+
+  section{
+    padding:44px 0;
+    border-top:1px solid var(--line);
+  }
+  h2{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    font-weight:600;
+    color:var(--moss);
+    margin-bottom:20px;
+  }
+  section p{
+    max-width:62ch;
+    color:var(--ink-soft);
+    font-size:16px;
+  }
+
+  .skills-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+  }
+  .skills-table tr{border-bottom:1px solid var(--line);}
+  .skills-table tr:last-child{border-bottom:none;}
+  .skills-table td{padding:12px 8px;}
+  .skills-table td:first-child{color:var(--ink-soft);width:150px;}
+  .skills-table td:last-child{color:var(--ink);}
+  .badge{
+    display:inline-block;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:2px 8px;
+    margin:2px 6px 2px 0;
+    font-size:13px;
+  }
+  .tool-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 12px 8px 8px;
+    margin:0 8px 8px 0;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .tools-row{
+    margin-top:8px;
+  }
+  .tool-badge .mono{
+    width:24px;
+    height:24px;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    color:var(--moss-deep);
+    background:var(--moss);
+    flex-shrink:0;
+  }
+
+  .stack-code{
+    background:var(--moss-deep);
+    color:#EDEAE0;
+    border-radius:8px;
+    padding:22px 26px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    line-height:1.9;
+    overflow-x:auto;
+  }
+  .stack-code .kw{color:#8FB89C;}
+  .stack-code .cm{color:#8A8778;}
+  .stack-code .st{color:#E0A458;}
+  .stack-code .cl{color:#EDEAE0;}
+
+  .project{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:26px 28px;
+  }
+  .project .ptitle{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .project .pstack{
+    font-size:13px;
+    color:var(--amber);
+    font-family:'IBM Plex Mono',monospace;
+    margin-bottom:12px;
+  }
+  .project p{color:var(--ink-soft);font-size:15px;max-width:60ch;}
+
+  .contact-list{list-style:none;margin-top:10px;display:flex;flex-wrap:wrap;gap:14px;}
+  .contact-list li{}
+  .contact-list a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 18px;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:15px;
+    transition:border-color 0.15s, color 0.15s;
+  }
+  .contact-list a:hover{border-color:var(--amber);color:var(--amber);}
+  .contact-list svg{width:20px;height:20px;flex-shrink:0;}
+
+  footer{
+    padding:36px 0 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:560px){
+    h1{font-size:32px;}
+    .tagline{font-size:16px;}
+    .contact-list li{flex-direction:column;gap:4px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">artificial intelligence &amp; data science</div>
+    <h1>Vignesh K</h1>
+    <div class="scatter-rule">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <div class="bar"></div>
+    </div>
+    <p class="tagline">Learning to build with code. Focused on Python, and figuring out where AI and data science can take me next.</p>
+
+    <div class="status-block">
+      <div><span class="status-label">Field</span> AI & Data Science</div>
+      <div><span class="status-label">Learning</span> Python</div>
+      <div><span class="status-label">Looking for</span> Opportunities</div>
+    </div>
+  </header>
+
+  <section id="about">
+    <h2>about</h2>
+    <p>I'm Vignesh K, a student in Artificial Intelligence and Data Science. I'm interested in learning computer languages and currently looking for job opportunities to grow into the field.</p>
+  </section>
+
+  <section id="skills">
+    <h2>skills</h2>
+    <table class="skills-table">
+      <tr>
+        <td>Language</td>
+        <td><span class="badge">Python</span></td>
+      </tr>
+      <tr>
+        <td>Field</td>
+        <td><span class="badge">Artificial Intelligence</span><span class="badge">Data Science</span></td>
+      </tr>
+    </table>
+
+    <div class="tools-row">
+      <span class="tool-badge"><span class="mono">Lv</span>Lovable</span>
+      <span class="tool-badge"><span class="mono">Cl</span>Claude</span>
+      <span class="tool-badge"><span class="mono">VS</span>VS Code</span>
+      <span class="tool-badge"><span class="mono">Py</span>IDLE Python</span>
+    </div>
+  </section>
+
+  <section id="project">
+    <h2>project</h2>
+    <div class="project">
+      <div class="ptitle">LMS Platform</div>
+      <div class="pstack">built with Lovable</div>
+      <p>A Learning Management System built using Lovable, an AI-assisted app builder. One of my first hands-on projects while learning to build software.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>contact</h2>
+    <ul class="contact-list">
+      <li>
+        <a href="mailto:v49266140@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          v49266140@gmail.com
+        </a>
+      </li>
+      <li>
+        <a href="https://linkedin.com/in/vignesh-k-60521742b" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+          linkedin.com/in/vignesh-k-60521742b
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <footer>
+    &copy; 2026 Vignesh K
+  </footer>
+
+</div>
+
+</body>
+</html>
